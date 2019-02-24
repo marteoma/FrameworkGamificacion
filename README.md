@@ -9,11 +9,9 @@ Para empezar a trabajar se debe hacer lo siguiente
 2. Crear el ambiente virtual con el comando virtualenv ENV
 
 ## Activar ambiente virtual
-Windows
-:  ENV/Scripts/activate
+Windows: ENV\Scripts\activate
 
-Linux
-:  source ENV/bin/activate
+Linux: source ENV/bin/activate
 
 Si funcionó al lado de la terminal se mostrará (ENV)
 Para salir del ambiente virtual solo hay que escribir deactivate

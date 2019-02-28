@@ -32,7 +32,7 @@ git pull
 3. git push
 
 ## Combinar cambios con master
-Esto se hace desde github en la opción pull requeste, se le debe mandar notificación de revisión a todos los miembros.
+Esto se hace desde github en la opción pull request, se le debe mandar notificación de revisión a todos los miembros.
 
 # Instrucciones base de datos
 

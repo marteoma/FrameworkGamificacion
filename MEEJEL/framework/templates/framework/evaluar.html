@@ -1,4 +1,49 @@
-aquí va el formulario para poner las constantes
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Framework Gamificacion</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <style>
+    body {
+        padding-top:80px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle colapsed" data-toggle="collapse" data-target="#navbar-1">
+                        <span class="sr-only">Menu</span>
+                        <span class="icon-bar">Menu</span>
+                        <span class="icon-bar">Menu</span>
+                        <span class="icon-bar">Menu</span>
+                        </button>
+                        <a href="#" class="navbar-brand">Framework Gamificacion</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="">Inicio</a></li>
+                            <li class="active"><a href="">Cálculo</a></li>
+                            <li class="active"><a href="">Item #3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+{% block content %}
+<center><h2>Cálculo de Gamificación</h2></center>
+{% endblock %}
+</body>
+
 <form action="{% url 'framework:resultados' %}">
+    {% csrf_token %}
+    {{form.as_p}}
     <input type="submit" value="RESULTADO">
 </form>
+
+</html>

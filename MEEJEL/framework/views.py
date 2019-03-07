@@ -22,5 +22,11 @@ def resultados(request):
     '''
     Show the result of the evaluation
     '''
-    return render(request, 'framework/results.html', {'result': calc_level()})
+    r = int(request.POST['constant_r'])
+    s = int(request.POST['constant_s'])
+    m = int(request.POST['constant_m'])
+    grade = int(request.POST['grade'])
+    
+    result = calc_level(r, m, s, grade)
+    return render(request, 'framework/results.html', {'result': result, 'total': result*10})
     

@@ -1,1 +1,1 @@
-web gunicorn MEEJEL:application
+web gunicorn MEEJEL:MEEJEL

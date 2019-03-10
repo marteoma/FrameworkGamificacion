@@ -1,1 +1,1 @@
-web gunicorn MEEJEL:MEEJEL
+web gunicorn MEEJEL

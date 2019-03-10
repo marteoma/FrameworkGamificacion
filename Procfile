@@ -1,1 +1,1 @@
-web gunicorn MEEJEL
+web: gunicorn MEEJEL.wsgi:MEEJEL --log-file -

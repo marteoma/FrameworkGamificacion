@@ -29,4 +29,10 @@ def resultados(request):
     
     result = calc_level(r, m, s, grade)
     return render(request, 'framework/results.html', {'result': result, 'total': result*10})
+
+def register(request):
+    '''
+    Form to create a new user account
+    '''
+    return render(request, 'framework/register.html')
     

@@ -127,7 +127,9 @@ STATIC_URL = '/static/'
 
 # Here on the options are not in the file by default
 
-AUTH_USER_MODEL = 'framework.User'
+# AUTH_USER_MODEL = 'framework.User'
+
+LOGIN_URL = '/'
 
 # Configure Django App for Heroku.
 import django_heroku

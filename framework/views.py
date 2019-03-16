@@ -1,17 +1,23 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate
-from django.contrib.auth import login as login_django
+from django.contrib.auth import authenticate, logout, login
 from django.http import HttpResponse
 from .utils import calc_level
-from .forms import Evaluate
+from .forms import Evaluate, Login
 
 # Create your views here.
 def index(request):
     '''
-    Main page of the framework, shows a form to register
+    Main page of the framework, shows a form to register for anonymus or evaluation for logged
     '''
-    return render(request, 'framework/index.html')
+    if request.user.is_authenticated:
+        # Do something for logged-in users.
+        form = Evaluate()
+        return render(request, 'framework/evaluar.html', {"form": form})
+    else:
+        # Do something for anonymous users.
+        form = Login()
+        return render(request, 'framework/index.html', { 'form': form })
 
 @login_required
 def evaluacion(request):
@@ -39,7 +45,7 @@ def register(request):
     '''
     return render(request, 'framework/register.html')
 
-def login(request):
+def v_login(request):
     '''
     Manage the intent of authentication of a user
     '''
@@ -48,8 +54,21 @@ def login(request):
     #TODO: Make login here
     user = authenticate(request, username=username, password=password)
     if user is not None:
-        login_django(request, user)
+        login(request, user)
         form = Evaluate()
         return render(request, 'framework/evaluar.html', {"form": form})
+    else:
+        form = Login()
+        return render(request, 'framework/index.html', 
+        { 'error': 'Usuario o contraseña incorrectos', 'form': form})
+
+def v_logout(request):
+    '''
+    Close the current user session
+    '''
+    logout(request)
+    form = Login()
+    return render(request, 'framework/index.html', 
+    { 'form': form})
 
     

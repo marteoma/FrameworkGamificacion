@@ -1,0 +1,11 @@
+{% extends 'framework\base.html' %}
+{% block content%}
+<center>
+<h2>Objetivos de Aprendizaje</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit">Crear objetivo</button>
+</form>
+</center>
+{% endblock %}

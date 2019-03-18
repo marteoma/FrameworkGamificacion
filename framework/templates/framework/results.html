@@ -1,7 +1,10 @@
-
-<meta charset="UTF-8">
-<title>Framework Gamificacion</title>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+{% extends 'framework\base.html' %}
+<!DOCTYPE html>
+<html lang="es">
+{% block content %}
+<center><h2>Resultado del nivel de Gamificación</h2></center>
+{% endblock %}
+{% block content2 %}
 <style>
 body {
     padding:50px;
@@ -11,31 +14,9 @@ body {
 .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
 .tg .tg-baqh{text-align:center;vertical-align:top}
 </style>
-<div class="container">
-    <header>
-        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a href="#" class="navbar-brand">Framework Gamificacion</a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbar-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Inicio</a></li>
-                        <li class="active"><a href="#">Cálculo</a></li>
-                        <!-- <li class="active"><a href="">Item #3</a></li> -->
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    </div>
-{% block content %}
-<center><h2>Resultado de Gamificación</h2></center>
-{% endblock %}
-
 El nivel de gamificación para un principio con esas características es de {{result}}%
 <br>
-Si tiene 10 principios, evidenciados de l misma manera, su resultado final será {{total}}%
+Si tiene 10 principios, evidenciados de la misma manera, su resultado final será {{total}}%
 <hr>
 <table class="tg">
   <tr>
@@ -55,5 +36,7 @@ Si tiene 10 principios, evidenciados de l misma manera, su resultado final será
     <td class="tg-baqh">Menos de 25%, no gamificado</td>
   </tr>
 </table>
+{% endblock %}
+</html>
 
 

@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, logout, login
 from django.http import HttpResponse
 from .utils import calc_level
-from .forms import Evaluate, Login
+from .forms import Evaluate, Login, Learning_ObjectivesForm
 
 # Create your views here.
 def index(request):
@@ -71,4 +71,11 @@ def v_logout(request):
     return render(request, 'framework/index.html', 
     { 'form': form})
 
+def v_learning_objectives(request):
+    if request.method == 'POST':
+        form = Learning_ObjectivesForm(request.POST)
+    else:
+        form = Learning_ObjectivesForm()
+
+    return render(request,'framework/objetivos_aprendizaje.html', {'form': form})
     

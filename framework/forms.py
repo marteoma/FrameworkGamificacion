@@ -16,7 +16,7 @@ class Login(forms.Form):
     Form for login
     '''
     username = forms.CharField(label="Usuario", required=True)
-    password = forms.CharField(label="Password", required=True)    
+    password = forms.CharField(label="Password", required=True, widget=forms.PasswordInput)    
     
 
 

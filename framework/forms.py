@@ -1,4 +1,5 @@
 from django import forms
+from framework.models import Learning_Objectives
 
 class Evaluate(forms.Form):
     '''
@@ -17,3 +18,22 @@ class Login(forms.Form):
     username = forms.CharField(label="Usuario", required=True)
     password = forms.CharField(label="Password", required=True)    
     
+
+
+class Learning_ObjectivesForm(forms.ModelForm):
+    class Meta:
+        model = Learning_Objectives
+
+        fields = [
+            'id',
+            'objective',
+        ]
+
+        labels = {
+            'id' : 'Código',
+            'objective': 'Objetivo'
+        }
+        widgets = {
+            'id' : forms.TextInput(attrs={'class':'form-control'}),
+            'objective': forms.TextInput(attrs={'class':'form-control'})
+        }

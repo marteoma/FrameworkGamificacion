@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, logout, login
 from django.http import HttpResponse
 from .utils import calc_level
-from .forms import Evaluate, Login, Learning_ObjectivesForm
+from .forms import Evaluate, Login, Register, Learning_ObjectivesForm
 
 # Create your views here.
 def index(request):
@@ -43,7 +43,8 @@ def register(request):
     '''
     Form to create a new user account
     '''
-    return render(request, 'framework/register.html')
+    form = Register()
+    return render(request, 'framework/register.html', {'form': form})
 
 def v_login(request):
     '''

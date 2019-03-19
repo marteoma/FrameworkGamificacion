@@ -18,7 +18,7 @@
 {% endif %}
 
 <div class="sign-in-form">
-  <form action="{% url 'framework:login' %}" method="POST">
+  <form action="{% url 'framework:login' %}" method="POST" class="sign-in-form">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="LOGIN">

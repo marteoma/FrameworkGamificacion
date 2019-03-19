@@ -15,10 +15,16 @@ class Login(forms.Form):
     '''
     Form for login
     '''
-    username = forms.CharField(label="Usuario", required=True)
-    password = forms.CharField(label="Password", required=True, widget=forms.PasswordInput)    
+    username = forms.CharField(label='', required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Usuario'}))
+    password = forms.CharField(label='', required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña'}))
     
-
+class Register(forms.Form):
+    '''
+    Form for register a user
+    '''
+    username = forms.CharField(label='', required=True, widget=forms.TextInput(attrs={'placeholder': 'Usuario'}))
+    email = forms.CharField(label='', required=True, widget=forms.EmailInput(attrs={'placeholder': 'Correo Electrónico'}))
+    password = forms.CharField(label='', required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña'}))
 
 class Learning_ObjectivesForm(forms.ModelForm):
     class Meta:

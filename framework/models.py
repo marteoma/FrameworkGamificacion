@@ -11,5 +11,5 @@ class Learning_Objectives(models.Model):
     objects = models.Manager()
     id = models.IntegerField(primary_key=True)
     objective = models.CharField(max_length=300, null=False)
-    principle = models.IntegerField(max_length=2, null=False)
-    gradle = models.IntegerField(max_length=2, null=False)
+    principle = models.IntegerField(null=False, default=1)
+    grade = models.IntegerField(null=False, default=1)

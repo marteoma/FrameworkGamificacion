@@ -18,6 +18,8 @@ class Login(forms.Form):
     username = forms.CharField(label="Usuario", required=True)
     password = forms.CharField(label="Password", required=True, widget=forms.PasswordInput)    
     
+
+
 class Learning_ObjectivesForm(forms.ModelForm):
     class Meta:
         model = Learning_Objectives
@@ -25,13 +27,19 @@ class Learning_ObjectivesForm(forms.ModelForm):
         fields = [
             'id',
             'objective',
+            'principle',
+            'grade',
         ]
 
         labels = {
             'id' : 'Código',
             'objective': 'Objetivo',
+            'principle': 'Principio',
+            'grade': 'Grado'
         }
         widgets = {
-            'id' : forms.TextInput(attrs={'class':'form-control'}),
-            'objective': forms.TextInput(attrs={'class':'form-control'})
+            'id' : forms.NumberInput(attrs={'class':'form-control'}),
+            'objective': forms.TextInput(attrs={'class':'form-control'}),
+            'principle': forms.NumberInput(attrs={'class':'form-control'}),
+            'grade': forms.NumberInput(attrs={'class':'form-control'})
         }

@@ -6,6 +6,10 @@ from django.contrib.auth.models import AbstractUser
 #     identifier = models.CharField(max_length=20, unique=True)
 #     USERNAME_FIELD = 'identifier'
 
+#Modelo correspondiente a los objetivos de aprendizaje
 class Learning_Objectives(models.Model):
-    id = models.AutoField(primary_key=True)
+    objects = models.Manager()
+    id = models.IntegerField(primary_key=True)
     objective = models.CharField(max_length=300, null=False)
+    principle = models.IntegerField(null=False, default=1)
+    grade = models.IntegerField(null=False, default=1)

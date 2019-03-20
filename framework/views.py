@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, logout, login
 from django.http import HttpResponse
@@ -27,6 +27,7 @@ def evaluacion(request):
     form = Evaluate()
     return render(request, 'framework/evaluar.html', {"form": form})
 
+##Metodo que muestra los resultados según el cálculo del nivel de gamificación
 def resultados(request):
     '''
     Show the result of the evaluation
@@ -39,6 +40,7 @@ def resultados(request):
     result = calc_level(r, m, s, grade)
     return render(request, 'framework/results.html', {'result': result, 'total': result*10})
 
+##Metodo registrar
 def register(request):
     '''
     Form to create a new user account
@@ -46,6 +48,7 @@ def register(request):
     form = Register()
     return render(request, 'framework/register.html', {'form': form})
 
+##Metodo iniciar sesión
 def v_login(request):
     '''
     Manage the intent of authentication of a user
@@ -63,6 +66,7 @@ def v_login(request):
         return render(request, 'framework/index.html', 
         { 'error': 'Usuario o contraseña incorrectos', 'form': form})
 
+##Metodo cerrar sesión
 def v_logout(request):
     '''
     Close the current user session
@@ -72,11 +76,28 @@ def v_logout(request):
     return render(request, 'framework/index.html', 
     { 'form': form})
 
+##Metodo agregar
 def v_learning_objectives(request):
     if request.method == 'POST':
         form = Learning_ObjectivesForm(request.POST)
+        form.save()
+        return redirect('framework:list_objetivos')
     else:
         form = Learning_ObjectivesForm()
 
     return render(request,'framework/objetivos_aprendizaje.html', {'form': form})
+
+##Metodo editar
+def v_learning_objectives_edit(request):
+    pass
+
+##Metodo para mostrar
+def list_objectives(request):
+    listt = Learning_Objectives.objects.all()
+    context = {'lista_obj': listt}
+    return render(request, 'framework/lista_obj.html', context)
+
+
+
+
     

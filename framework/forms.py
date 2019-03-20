@@ -33,13 +33,19 @@ class Learning_ObjectivesForm(forms.ModelForm):
         fields = [
             'id',
             'objective',
+            'principle',
+            'grade',
         ]
 
         labels = {
             'id' : 'Código',
-            'objective': 'Objetivo'
+            'objective': 'Objetivo',
+            'principle': 'Principio',
+            'grade': 'Grado'
         }
         widgets = {
-            'id' : forms.TextInput(attrs={'class':'form-control'}),
-            'objective': forms.TextInput(attrs={'class':'form-control'})
+            'id' : forms.NumberInput(attrs={'class':'form-control'}),
+            'objective': forms.TextInput(attrs={'class':'form-control'}),
+            'principle': forms.NumberInput(attrs={'class':'form-control'}),
+            'grade': forms.NumberInput(attrs={'class':'form-control'})
         }

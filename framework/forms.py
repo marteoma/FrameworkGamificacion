@@ -15,7 +15,7 @@ class Login(forms.Form):
     '''
     Form for login
     '''
-    username = forms.CharField(label='', required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Usuario'}))
+    username = forms.CharField(label='', required=True, widget=forms.TextInput(attrs={'placeholder': 'Usuario'}))
     password = forms.CharField(label='', required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña'}))
     
 class Register(forms.Form):

@@ -1,0 +1,28 @@
+{% extends 'framework/base.html' %}
+
+{% block content %}
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>Codigo</td>
+			<td>Objetivo</td>
+		</tr>
+		
+	</thead>
+	<tbody>
+		{% if lista_obj %}
+		{% for i in lista_obj %}
+		<tr>
+			<td>{{ i.id }}</td>
+			<td>{{ i.objective }}</td>
+		</tr>
+        
+		{% endfor %}
+		
+		{% else %}
+		<h2>No hay registros</h2>
+		{% endif %}
+	</tbody>
+</table> 
+{% endblock%}

@@ -10,4 +10,5 @@ urlpatterns = [
     path('login', views.v_login, name='login'),
     path('logout', views.v_logout, name='logout'),
     path('objetivos', views.v_learning_objectives, name='objetivos'),
+    path('listobj', views.list_objectives, name='list_objetivos'),
 ]

@@ -1,5 +1,5 @@
 {
-  "python.pythonPath": "ENV\\Scripts\\python.exe",
+  "python.pythonPath": "C:\\Users\\USER\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe",
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
   "editor.tabSize": 4,

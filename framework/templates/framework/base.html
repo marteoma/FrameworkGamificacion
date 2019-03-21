@@ -67,15 +67,16 @@
 <body>
     <div class="container">
         <header>
-            <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+            <nav class="navbar navbar-default navbar-fixed-top navbar">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a href="#" class="navbar-brand">MEEJEL</a>
                     </div>
                     <div class="collapse navbar-collapse" id="navbar-1">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Inicio</a></li>
-                            <li class="active"><a href="#">Cálculo</a></li>
+                            <li class="active"><a href="{% url 'framework:evaluacion' %}">Evaluar</a></li>
+                            <li class="active"><a href="{% url 'framework:objetivos' %}">Objetivo Nuevo</a></li>
+                            <li class="active"><a href="{% url 'framework:list_objetivos' %}">Lista de objetivos</a></li>
                             <li class="active"><a href="{% url 'framework:logout' %}">Log Out</a></li>
                         </ul>
                     </div>

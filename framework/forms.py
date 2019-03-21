@@ -1,5 +1,6 @@
 from django import forms
 from framework.models import Learning_Objectives
+from framework.choices import *
 
 class Evaluate(forms.Form):
     '''
@@ -35,17 +36,23 @@ class Learning_ObjectivesForm(forms.ModelForm):
             'objective',
             'principle',
             'grade',
+            'evidence',
+            'wid',
         ]
 
         labels = {
             'id' : 'Código',
             'objective': 'Objetivo',
             'principle': 'Principio',
-            'grade': 'Grado'
+            'grade': 'Grado',
+            'evidence': 'Evidencia',
+            'wid' : 'Wid'
         }
         widgets = {
             'id' : forms.NumberInput(attrs={'class':'form-control'}),
             'objective': forms.TextInput(attrs={'class':'form-control'}),
-            'principle': forms.NumberInput(attrs={'class':'form-control'}),
-            'grade': forms.NumberInput(attrs={'class':'form-control'})
+            'principle': forms.Select(choices = PRINCIPLE_CHOICES, attrs={'class':'form-control'}),
+            'grade' : forms.Select(choices = GRADE_CHOICES, attrs={'class':'form-control'}),
+            'evidence': forms.TextInput(attrs={'class':'form-control'}),
+            'wid': forms.NumberInput(attrs={'class':'form-control'})
         }

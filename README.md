@@ -21,6 +21,10 @@ Usar el siguiente comando **pip install -r requirements.txt**
 
 Con lo anterior ya se tiene listo el ambiente de trabajo para trabajar.
 
+## Correr aplicación
+Correr el siguiente comando, luego de haber ingresado al ambiente virtual
+**python manage.py runserver**
+
 # Instrucciones para Git
 
 ## Actualizar repositorio

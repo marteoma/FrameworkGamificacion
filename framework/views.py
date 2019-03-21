@@ -39,7 +39,7 @@ def resultados(request):
     m = int(request.POST['constant_m'])
     grade = int(request.POST['grade'])
     
-    result = calc_level(r, m, s, grade)
+    result = calc_level(grade)
     return render(request, 'framework/results.html', {'result': result, 'total': result*10})
 
 ##Metodo registrar

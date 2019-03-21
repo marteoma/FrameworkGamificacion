@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .utils import calc_level
 from .forms import Evaluate, Login, Register, Learning_ObjectivesForm
+from .models import Learning_Objectives
 
 # Create your views here.
 def index(request):

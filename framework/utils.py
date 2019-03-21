@@ -2,7 +2,17 @@
 This file contains functions that might help the procedures.
 '''
 
-def calc_level(r: int, m: int, s: int, Gr: int) -> float:
+'''
+Constants
+'''
+#r
+r = 10
+#m
+m = 5
+#s
+s = 5
+
+def calc_level(Gr: int) -> float:
     '''Right now this method does not too much
     '''
     Tlg = 40

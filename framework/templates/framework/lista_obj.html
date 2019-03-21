@@ -1,32 +1,33 @@
 {% extends 'framework/base.html' %}
-
+<!DOCTYPE html>
+<html lang="es">
 {% block content %}
 
-<table class="table table-bordered">
-	<thead>
-		<tr>
-			<td>Codigo</td>
-			<td>Objetivo</td>
-			<td>Principio</td>
-			<td>Grado</td>
-		</tr>
-		
-	</thead>
-	<tbody>
-		{% if lista_obj %}
-		{% for i in lista_obj %}
-		<tr>
-			<td>{{ i.id }}</td>
-			<td>{{ i.objective }}</td>
-			<td>{{ i.principle }}</td>
-			<td>{{ i.grade }}</td>
-		</tr>
-        
-		{% endfor %}
-		
-		{% else %}
-		<h2>No hay registros</h2>
-		{% endif %}
-	</tbody>
-</table> 
+<table class="tg">
+	<tr>
+	  <th class="tg-baqh">Codigo</th>
+	  <th class="tg-baqh">Objetivo</th>
+	  <th class="tg-baqh">Principio</th>
+	  <th class="tg-baqh">Grado</th>
+	  <th class="tg-baqh">Evidencia</th>
+	  <th class="tg-baqh">Wid</th>
+	  <th class="tg-baqh">Acciones</th>
+	</tr>
+	{% if lista_obj %}
+	{% for i in lista_obj %}
+	<tr>
+	  <td class="tg-baqh">{{i.id}}</td>
+	  <td class="tg-baqh">{{i.objective}}</td>
+	  <td class="tg-baqh">{{i.principle}}</td>
+	  <td class="tg-baqh">{{i.grade}}</td>
+	  <td class="tg-baqh">{{i.evidence}}</td>
+	  <td class="tg-baqh">{{i.wid}}</td>
+	</tr>
+	{% endfor %}
+
+	{% else %}
+	<h4>No hay registros</h4>
+	{% endif %}
+  </table>
 {% endblock%}
+</html>

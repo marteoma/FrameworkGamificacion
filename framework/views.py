@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, logout, login
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 from .utils import calc_level
-from .forms import Evaluate, Login, Learning_ObjectivesForm
-from framework.models import Learning_Objectives
+from .forms import Evaluate, Login, Register, Learning_ObjectivesForm
 
 # Create your views here.
 def index(request):
@@ -46,7 +46,17 @@ def register(request):
     '''
     Form to create a new user account
     '''
-    return render(request, 'framework/register.html')
+    if (request.method == 'GET'):
+        form = Register()
+        return render(request, 'framework/register.html', {'form': form})
+    elif (request.method == 'POST'):
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        user = User.objects.create_user(username, email, password)
+        user.save()
+        form = Evaluate()
+        return render(request, 'framework/evaluar.html', {"form": form})
 
 ##Metodo iniciar sesión
 def v_login(request):

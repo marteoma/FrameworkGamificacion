@@ -1,30 +1,26 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <style>
-    * {
-        margin: 5px;
-    }
+  * {
+    margin: 5px;
+    text-align: center;
+  }
 
-    body {
-        padding:50px;
-    }
+  body {
+    padding:50px;
+  }
 
-    .sign-in-form {
-        display: flex;
-        align-items: space-around;
-        flex-direction: column;
-    }
+  .sign-in-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 </style>
 
-<form>
-  <div class="sign-in-form">
-    <h4 class="text-center">REGISTRAR</h4>
-    <label for="sign-in-form-username">Username</label>
-    <input type="text" class="sign-in-form-username" id="sign-in-form-username">
-    <label for="sign-in-form-password">Password</label>
-    <input type="password" class="sign-in-form-password" id="sign-in-form-password">
-    <label for="sign-in-form-confirm-username">Confirm Username</label>
-    <input type="text" class="sign-in-form-confirm-username" id="sign-in-form-confirm-username">
-    <button type="submit" class="sign-in-form-button">REGISTRAR</button>
-  </div>
-</form>
+<div class="sign-in-form">
+  <form action="{% url 'framework:register' %}" method="POST" class="sign-in-form">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="REGISTRAR">
+  </form>
+</div>

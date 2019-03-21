@@ -18,7 +18,7 @@
 </style>
 
 <div class="sign-in-form">
-  <form action="#" method="POST" class="sign-in-form">
+  <form action="{% url 'framework:register' %}" method="POST" class="sign-in-form">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="REGISTRAR">

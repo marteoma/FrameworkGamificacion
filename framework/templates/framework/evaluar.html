@@ -1,15 +1,17 @@
 {% extends 'framework/base.html' %}
-<!DOCTYPE html>
-<html lang="es">
 {% block content%}
-<center>
-<h2>Cálculo Nivel de Gamificación </h2>
-<form action="{% url 'framework:resultados' %}" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="RESULTADO">
-</form>
-</center>
+<head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'framework/forms.css' %}" type="text/css">
+</head>
+<div class = "new-obj">
+    <div class="form">
+        <form action="{% url 'framework:resultados' %}" method="POST" class=".new-form">
+            <h2>Cálculo Nivel de Gamificación </h2>
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button type="submit" value="RESULTADO">RESULTADO</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
-
-</html>

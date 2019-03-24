@@ -29,7 +29,6 @@ def evaluacion(request):
     form = Evaluate()
     return render(request, 'framework/evaluar.html', {"form": form})
 
-##Metodo que muestra los resultados según el cálculo del nivel de gamificación
 def resultados(request):
     '''
     Show the result of the evaluation
@@ -42,7 +41,6 @@ def resultados(request):
     result = calc_level(grade)
     return render(request, 'framework/results.html', {'result': result, 'total': result*10})
 
-##Metodo registrar
 def register(request):
     '''
     Form to create a new user account
@@ -59,7 +57,6 @@ def register(request):
         form = Evaluate()
         return render(request, 'framework/evaluar.html', {"form": form})
 
-##Metodo iniciar sesión
 def v_login(request):
     '''
     Manage the intent of authentication of a user
@@ -77,7 +74,6 @@ def v_login(request):
         return render(request, 'framework/index.html', 
         { 'error': 'Usuario o contraseña incorrectos', 'form': form})
 
-##Metodo cerrar sesión
 def v_logout(request):
     '''
     Close the current user session
@@ -87,8 +83,10 @@ def v_logout(request):
     return render(request, 'framework/index.html', 
     { 'form': form})
 
-##Metodo agregar
 def v_learning_objectives(request):
+    '''
+    Method add a learning objectives
+    '''
     if request.method == 'POST':
         form = Learning_ObjectivesForm(request.POST)
         form.save()
@@ -98,12 +96,24 @@ def v_learning_objectives(request):
 
     return render(request,'framework/objetivos_aprendizaje.html', {'form': form})
 
-##Metodo editar
-def v_learning_objectives_edit(request):
-    pass
+def v_learning_objectives_edit(request, codigo):
+    '''
+    Method edit a learning objectives
+    '''
+    inst = Learning_Objectives.objects.get(id=codigo)
+    if request.method == 'GET':
+        form = Learning_ObjectivesForm(instance=inst)
+    else:
+        form = Learning_ObjectivesForm(request.POST, instance=inst)
+        if form.is_valid():
+            form.save()
+        return redirect('framework:list_objetivos')
+    return render(request, 'framework/objetivos_aprendizaje.html', {'form': form})
 
-##Metodo para mostrar
 def list_objectives(request):
+    '''
+    Method list learning objectives
+    '''
     listt = Learning_Objectives.objects.all()
     context = {'lista_obj': listt}
     return render(request, 'framework/lista_obj.html', context)

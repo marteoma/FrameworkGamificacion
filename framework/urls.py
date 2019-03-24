@@ -11,4 +11,5 @@ urlpatterns = [
     path('logout', views.v_logout, name='logout'),
     path('objetivos', views.v_learning_objectives, name='objetivos'),
     path('listobj', views.list_objectives, name='list_objetivos'),
+    path('editar/<int:codigo>/', views.v_learning_objectives_edit, name='edit_objetivos'), 
 ]

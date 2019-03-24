@@ -110,6 +110,17 @@ def v_learning_objectives_edit(request, codigo):
         return redirect('framework:list_objetivos')
     return render(request, 'framework/objetivos_aprendizaje.html', {'form': form})
 
+def v_learning_objectives_delete(request, codigo):
+    '''
+    Method delete a learning objectives
+    '''
+    inst = Learning_Objectives.objects.get(id=codigo)
+    if request.method == 'POST':
+        inst.delete()
+        return redirect('framework:list_objetivos')
+    return render(request,'framework/objetivos_aprendizaje.html', {'form':inst})
+
+
 def list_objectives(request):
     '''
     Method list learning objectives

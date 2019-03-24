@@ -22,6 +22,9 @@
 	  <td class="tg-baqh">{{i.grade}}</td>
 	  <td class="tg-baqh">{{i.evidence}}</td>
 	  <td class="tg-baqh">{{i.wid}}</td>
+		<td class="tg-baqh">
+		<a class="btn btn-success btn-xs"  href="{% url 'framework:edit_objetivos' i.id %}">Editar</a>
+		</td>
 	</tr>
 	{% endfor %}
 

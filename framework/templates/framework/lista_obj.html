@@ -22,8 +22,8 @@
 	  <td class="tg-baqh">{{i.evidence}}</td>
 	  <td class="tg-baqh">{{i.wid}}</td>
 		<td class="tg-baqh">
-		<button class="btn btn-success btn-xs"  href="{% url 'framework:edit_objetivos' i.id %}">Editar</button>
-		<button class="btn btn-danger btn-xs"  href="{% url 'framework:delete_objetivos' i.id %}">Eliminar</button>
+		<a class="btn-btn-success-btn-xs"  href="{% url 'framework:edit_objetivos' i.id %}">Editar</a>
+		<a class="btn-btn-danger-btn-xs"  href="{% url 'framework:delete_objetivos' i.id %}">Eliminar</a>
 		</td>
 	</tr>
 	{% endfor %}

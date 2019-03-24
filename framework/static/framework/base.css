@@ -7,8 +7,24 @@ label{
 }
 
 
-button{
-    border-radius: 10px;
+.btn-btn-success-btn-xs{
+  background-color: #6b6d6c;
+  color: white;
+  padding: 1px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.btn-btn-danger-btn-xs{
+  background-color: #cc7575;
+  color: white;
+  padding: 1px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
 }
 body {
     padding:70px;
@@ -19,9 +35,7 @@ body {
     overflow-x: hidden;
 }
 
-a {
-    text-decoration:none;
-}
+
 
 .nav {
     position:absolute;

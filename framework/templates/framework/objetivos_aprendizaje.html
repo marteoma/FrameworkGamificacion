@@ -1,11 +1,69 @@
 {% extends 'framework/base.html' %}
 {% block content%}
-<center>
-<h2>Objetivos de Aprendizaje</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p}}
-    <button type="submit">Crear objetivo</button>
-</form>
-</center>
+<style>
+/* Center the loader */
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+body{
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.new-obj{
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+.form{
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 800px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius:10px;
+}
+
+.form button:hover,.form button:active,.form button:focus {
+  background: #d4eaf8;
+  max-width: 200px;
+  max-height: 800px;
+  border-radius: 10px;
+}
+
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #d4eaf8;
+}
+.container .info span {
+  color: #d4eaf8;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #d4eaf8;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #d4eaf8;
+}
+</style>
+<div class = "new-obj">
+    <div class="form">
+        <form method="POST" class=".new-form">
+            <h2>Nuevo Objetivo de Aprendizaje</h2>
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button type="submit" value="Crear objetivo">Crear objetivo</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

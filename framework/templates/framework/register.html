@@ -146,8 +146,8 @@ body {
 <div class="register-page">
   <div class = "form">
     <div style="display:none;" id="myDiv" class="animate-bottom">    
-      <form action="{% url 'framework:register' %}" method="POST" class=".register-form ">
-        <h2>MEEJEL</h2>
+      <form action="{% url 'framework:register' %}" method="POST" class=".register-form">
+        <h2>REGISTRATE</h2>
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit" value="REGISTRAR">REGISTRAR</button> 
@@ -164,6 +164,7 @@ function rotation() {
 
 function showPage() {
   document.getElementById("myDiv").style.display = "block";
+  document.getElementById("loader").style.display = "none";
 }
 
 </script>

@@ -27,6 +27,12 @@ class Register(forms.Form):
     email = forms.CharField(label='', required=True, widget=forms.EmailInput(attrs={'placeholder': 'Correo Electrónico'}))
     password = forms.CharField(label='', required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña'}))
 
+class NewAssessment(forms.Form):
+    '''
+    Form to create a new assessment
+    '''
+    name = forms.CharField(label='', required=True, widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
+
 class Learning_ObjectivesForm(forms.ModelForm):
     class Meta:
         model = Learning_Objectives

@@ -4,8 +4,8 @@ from django.contrib.auth import authenticate, logout, login
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .utils import calc_level
-from .forms import Evaluate, Login, Register, Learning_ObjectivesForm
-from .models import Learning_Objectives
+from .forms import Evaluate, Login, Register, Learning_ObjectivesForm, NewAssessment
+from .models import Learning_Objectives, Assessment
 
 # Create your views here.
 def index(request):
@@ -29,13 +29,12 @@ def evaluacion(request):
     form = Evaluate()
     return render(request, 'framework/evaluar.html', {"form": form})
 
+@login_required
 def resultados(request):
     '''
     Show the result of the evaluation
     '''
-    r = int(request.POST['constant_r'])
-    s = int(request.POST['constant_s'])
-    m = int(request.POST['constant_m'])
+
     grade = int(request.POST['grade'])
     
     result = calc_level(grade)
@@ -54,8 +53,13 @@ def register(request):
         password = request.POST['password']
         user = User.objects.create_user(username, email, password)
         user.save()
-        form = Evaluate()
-        return render(request, 'framework/evaluar.html', {"form": form})
+
+        #Login the new created user
+        user = authenticate(username=username, password=password)
+        login(request, user)
+
+        assessments = Assessment.objects.filter(owner=user.id)
+        return redirect('/assessments', {'assessments': assessments})
 
 def v_login(request):
     '''
@@ -67,13 +71,14 @@ def v_login(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        form = Evaluate()
-        return render(request, 'framework/evaluar.html', {"form": form})
+        assessments = Assessment.objects.filter(owner=user.id)
+        return redirect('/assessments', {'assessments': assessments})
     else:
         form = Login()
         return render(request, 'framework/index.html', 
         { 'error': 'Usuario o contraseña incorrectos', 'form': form})
 
+@login_required
 def v_logout(request):
     '''
     Close the current user session
@@ -83,6 +88,7 @@ def v_logout(request):
     return render(request, 'framework/index.html', 
     { 'form': form})
 
+@login_required
 def v_learning_objectives(request):
     '''
     Method add a learning objectives
@@ -96,6 +102,7 @@ def v_learning_objectives(request):
 
     return render(request,'framework/objetivos_aprendizaje.html', {'form': form})
 
+@login_required
 def v_learning_objectives_edit(request, codigo):
     '''
     Method edit a learning objectives
@@ -110,6 +117,7 @@ def v_learning_objectives_edit(request, codigo):
         return redirect('framework:list_objetivos')
     return render(request, 'framework/objetivos_aprendizaje.html', {'form': form})
 
+@login_required
 def v_learning_objectives_delete(request, codigo):
     '''
     Method delete a learning objectives
@@ -120,7 +128,7 @@ def v_learning_objectives_delete(request, codigo):
         return redirect('framework:list_objetivos')
     return render(request,'framework/objetivos_aprendizaje.html', {'form':inst})
 
-
+@login_required
 def list_objectives(request):
     '''
     Method list learning objectives
@@ -129,6 +137,36 @@ def list_objectives(request):
     context = {'lista_obj': listt}
     return render(request, 'framework/lista_obj.html', context)
 
+@login_required
+def list_assessment(request):
+    '''
+    List all the assessment of an user
+    '''
+    user = request.user.id
+    assessments = Assessment.objects.filter(owner=user)
+    context = { 'assessments': assessments }
+    return render(request, 'framework/assessment_list.html', context)
+
+@login_required
+def new_assessment(request):
+    '''
+    Creates a new assessment linked the current user
+    '''
+    if request.method == 'POST':
+        #The current logged user
+        user = request.user
+
+        #Save the new assessment
+        user.assessment_set.create(name=request.POST['name'])
+
+        #Gets list of assessment to redirect
+        assessments = Assessment.objects.filter(owner=user.id)
+        context = { 'assessments': assessments }
+        #Redirect to avoid resave when update the page
+        return redirect('/assessments', context)
+    else:
+        form = NewAssessment()
+        return render(request, 'framework/assessment_new.html', {'form': form})
 
 
 

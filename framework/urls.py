@@ -13,4 +13,6 @@ urlpatterns = [
     path('listobj', views.list_objectives, name='list_objetivos'),
     path('editar/<int:codigo>/', views.v_learning_objectives_edit, name='edit_objetivos'),
     path('delete/<int:codigo>/', views.v_learning_objectives_delete, name='delete_objetivos'),
+    path('assessments', views.list_assessment, name='assessment'),
+    path('assessments/new', views.new_assessment, name='new_assessment'),
 ]

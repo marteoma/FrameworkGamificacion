@@ -10,7 +10,7 @@
 	{% for i in assessments %}
 	<tr>
 	  <td class="tg-baqh">{{i.id}}</td>
-	  <td class="tg-baqh"><a href="#">{{i.name}}</a></td>
+	  <td class="tg-baqh"><a href="{% url 'framework:list_objetivos' i.id %}">{{i.name}}</a></td>
 	</tr>
 	{% endfor %}
 

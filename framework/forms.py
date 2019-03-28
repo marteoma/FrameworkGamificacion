@@ -1,16 +1,6 @@
 from django import forms
-from framework.models import Learning_Objectives
-from framework.choices import *
-
-class Evaluate(forms.Form):
-    '''
-    Form for the constants
-    '''
-    constant_r = forms.IntegerField(label="Total de roles", required=True)
-    constant_m = forms.IntegerField(label="Total de materiales", required=True)
-    constant_s = forms.IntegerField(label="Total de pasos", required=True)
-    grade = forms.ChoiceField(label="Evidencia de incorporación",
-     required=True, choices=((1,"Null"), (2,"Medium"), (3,"Significant"), (4,"High"), (5,"Very High") ))
+from .models import Learning_Objectives
+from .choices import *
 
 class Login(forms.Form):
     '''
@@ -34,6 +24,7 @@ class NewAssessment(forms.Form):
     name = forms.CharField(label='', required=True, widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
 
 class Learning_ObjectivesForm(forms.ModelForm):
+
     class Meta:
         model = Learning_Objectives
 
@@ -43,7 +34,7 @@ class Learning_ObjectivesForm(forms.ModelForm):
             'principle',
             'grade',
             'evidence',
-            'wid',
+            'assessment'
         ]
 
         labels = {
@@ -52,13 +43,12 @@ class Learning_ObjectivesForm(forms.ModelForm):
             'principle': 'Principio',
             'grade': 'Grado',
             'evidence': 'Evidencia',
-            'wid' : 'Wid'
         }
         widgets = {
             'id' : forms.NumberInput(attrs={'class':'form-control'}),
             'objective': forms.TextInput(attrs={'class':'form-control'}),
-            'principle': forms.Select(choices = PRINCIPLE_CHOICES, attrs={'class':'form-control'}),
-            'grade' : forms.Select(choices = GRADE_CHOICES, attrs={'class':'form-control'}),
+            'principle': forms.Select(choices=PRINCIPLE_CHOICES, attrs={'class':'form-control'}),
+            'grade' : forms.Select(choices=GRADE_CHOICES, attrs={'class':'form-control'}),
             'evidence': forms.TextInput(attrs={'class':'form-control'}),
-            'wid': forms.NumberInput(attrs={'class':'form-control'})
+            'assessment': forms.HiddenInput()
         }

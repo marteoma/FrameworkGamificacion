@@ -1,5 +1,5 @@
 {% extends 'framework/base.html' %}
-<!DOCTYPE html>
+
 <html lang="es">
 {% block content %}
 <table class="tg">
@@ -32,5 +32,6 @@
 	<h4>No hay registros</h4>
 	{% endif %}
   </table>
+	<a href="{% url 'framework:objetivos' assessment %}">Nuevo objetivo</a>
 {% endblock%}
 </html>

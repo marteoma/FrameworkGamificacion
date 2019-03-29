@@ -22,6 +22,6 @@ class Learning_Objectives(models.Model):
     principle = models.IntegerField(null=False, default=1)
     grade = models.IntegerField(null=False, default=1)
     evidence = models.CharField(max_length=150, null=False)
-    wid = models.DecimalField(max_digits=5, decimal_places=2)
+    wid = models.DecimalField(max_digits=5, decimal_places=2, null=True)
 
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)    

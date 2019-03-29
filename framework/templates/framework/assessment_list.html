@@ -1,0 +1,23 @@
+{% extends 'framework/base.html' %}
+
+{% block content %}
+<table class="tg">
+	<tr>
+	  <th class="tg-baqh">Id</th>
+	  <th class="tg-baqh">Nombre</th>
+	</tr>
+	{% if assessments %}
+	{% for i in assessments %}
+	<tr>
+	  <td class="tg-baqh">{{i.id}}</td>
+	  <td class="tg-baqh"><a href="{% url 'framework:list_objetivos' i.id %}">{{i.name}}</a></td>
+	</tr>
+	{% endfor %}
+
+	{% else %}
+	<h4>No hay evaluaciones</h4>
+	{% endif %}
+  </table>
+  <a href="{% url 'framework:new_assessment' %}">Nueva evaluación</a>
+{% endblock%}
+</html>

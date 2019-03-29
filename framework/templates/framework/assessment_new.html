@@ -6,11 +6,11 @@
 </head>
 <div class = "new-obj">
     <div class="form">
-        <form action="{% url 'framework:resultados' %}" method="POST" class=".new-form">
-            <h2>Cálculo Nivel de Gamificación </h2>
+        <form action="{% url 'framework:new_assessment' %}" method="POST" class=".new-form">
+            <h2>Nueva Estrategia de evaluación</h2>
             {% csrf_token %}
             {{ form.as_p}}
-            <button type="submit" value="RESULTADO">RESULTADO</button>
+            <button type="submit" value="Crear objetivo">Crear Estrategia</button>
         </form>
     </div>
 </div>

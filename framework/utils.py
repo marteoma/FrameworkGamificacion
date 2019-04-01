@@ -1,84 +1,73 @@
 '''
 This file contains functions that might help the procedures.
 '''
+from framework.models import Assessment, Learning_Objectives
+from django.db.models import Avg
 
 '''
 Constants
 '''
-#r
+#Roles
 r = 10
-#m
+#Materials
 m = 5
-#s
+#Steps
 s = 5
 
-def calc_level(Gr: int) -> float:
-    '''Right now this method does not too much
+def calc_level(assessment: int):
+    ''' Calculates the level of gamification of the assessment
     '''
-    Tlg = 40
-    Tru = 30
-    W = __W(Tlg, Tru,Gr, r, m, s)
-    return __LW(W)
+    try:
+        acum = 0
+        for i in range(1,11,1):
+            acum += __W(i, assessment)
+        acum = round(acum,2)
+        return __LW(acum)
+    except:
+        return 'Un error ha ocurrido durante el cálculo, revise que tenga principios'
 
-def __Tlg(n: int, x: int):
+def __Tlg(principle: int, assessment):
     ''' Gets the number of learning goals identified in the game elements
     
     Parameters
     ----------
-    n : int
-        Quantity of learning goals
-    x : int
-        Quantity of learning goals for each principle
-
+    principle : int
+        The principle to calculate the total of rules
+    
     Returns
     -------
     float
-        Total learning goals
+        Total learning goals for the principle
     '''
-    return (40 * x) / n
+    return (__CountPrinciple(p=principle, a=assessment) * 40) / __CountPrinciple(a=assessment)
 
-def __Tru(m: int, y: int):
-    ''' Gets the number of game rules in the game elements
-
-    Parameters
-    ----------
-    m : int
-        Quantity of rules
-    y : int
-        Quantity of rules for each principle
-
-    Returns
-    -------
-    float
-        Total rules
+def __Tru(principle: int, assessment):
+    ''' this is useless
     '''
-    return  (30 * y) / m
+    return (__CountPrinciple(p=principle, a=assessment) * 30) / __CountPrinciple(a=assessment)
 
-def __W(Tlg: float, Tru: float, Gr: int, r: int, m: int, s: int):
+def __W(principle: int, assessment):
     ''' Gets weight of each principle
 
     Parameters
     ----------
-    Tlg : float
-        Total learning goals
-    Tru : float
-        Total rules
-    Gr : int
-        Grade
-    r : int
-        Roles
-    m : int
-        Materials
-    s : int
-        Steps
+    principle : int
+        Id of the principle
 
     Returns
     -------
     float
         Principle Weight
     '''
-    return (Tlg + r + m + s) * Gr
-
+    Tlg = __Tlg(principle, assessment)
+    Tru = __Tru(principle, assessment)
+    Gr = Learning_Objectives.objects.filter(principle=principle, assessment_id=assessment)\
+        .aggregate(Avg('grade'))['grade__avg']
+    W = 0
+    if Gr != None:
+        W = (Tlg + Tru + r + m + s) * Gr
+    
+    return W
 
 def __LW(W: float):
     ''' Percentaje of incorporation of gamification in the enviroment
@@ -94,3 +83,25 @@ def __LW(W: float):
         Gamification level
     '''
     return W / 50
+
+
+def __CountPrinciple(p: int = 0, a: int = 1):
+    '''Count the amount of learning objectives for the specified principle.
+    If no principle is passed will count all the objectives.
+
+    Parameters
+    ----------
+    p : int
+        Id of the principle
+        If none, all the principles will count
+    
+    Returns
+    -------
+    int
+        Amount of learning objectives
+    '''
+    if p == 0:
+        return Learning_Objectives.objects.filter(assessment_id=a).count()
+    else:
+        return Learning_Objectives.objects.filter(principle=p, assessment_id=a).count()
+    

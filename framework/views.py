@@ -24,14 +24,12 @@ def index(request):
         return render(request, 'framework/index.html', { 'form': form })
 
 @login_required
-def resultados(request):
+def resultados(request, assessment):
     '''
     Show the result of the evaluation
-    '''
-
-    grade = int(request.POST['grade'])
+    '''    
     
-    result = calc_level(grade)
+    result = calc_level(assessment)
     return render(request, 'framework/results.html', {'result': result, 'total': result*10})
 
 def register(request):

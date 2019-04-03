@@ -2,17 +2,18 @@
 
 <html lang="es">
 {% block content %}
+{% if lista_obj %}
 <table class="tg">
 	<tr>
-	  <th class="tg-baqh">Codigo</th>
-	  <th class="tg-baqh">Objetivo</th>
-	  <th class="tg-baqh">Principio</th>
-	  <th class="tg-baqh">Grado</th>
-	  <th class="tg-baqh">Evidencia</th>
-	  <th class="tg-baqh">Wid</th>
-	  <th class="tg-baqh">Acciones</th>
+	  <th >Codigo</th>
+	  <th >Objetivo</th>
+	  <th >Principio</th>
+	  <th >Grado</th>
+	  <th >Evidencia</th>
+	  <th >Wid</th>
+	  <th >Acciones</th>
 	</tr>
-	{% if lista_obj %}
+	
 	{% for i in lista_obj %}
 	<tr>
 	  <td class="tg-baqh">{{i.id}}</td>
@@ -32,6 +33,6 @@
 	<h4>No hay registros</h4>
 	{% endif %}
   </table>
-	<a href="{% url 'framework:objetivos' assessment %}">Nuevo objetivo</a>
+	<a class="btn-new" href="{% url 'framework:objetivos' assessment %}">Nuevo objetivo</a>
 {% endblock%}
 </html>

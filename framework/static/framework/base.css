@@ -6,6 +6,19 @@ label{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.btn-new{
+  background-color: #6b6d6c;
+  color: white;
+  padding: 1px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
 
 .btn-btn-success-btn-xs{
   background-color: #6b6d6c;
@@ -26,16 +39,6 @@ label{
   display: inline-block;
   border-radius: 5px;
 }
-body {
-    padding:70px;
-    display:flex;
-    flex-direction:column;
-    background-color:#d4eaf8;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-
 
 .nav {
     position:absolute;
@@ -130,16 +133,30 @@ z-index:10;
 }
 
 
+
+body {
+  padding:70px;
+  display:flex;
+  flex-direction:column;
+  background-color:#4698c4;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 table {
  width: 70%;
-  text-align: center;
-  vertical-align: top;
-  border:  solid #eee;
-  border-collapse: collapse;
-  caption-side: bottom;
-  border-radius: 10px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  margin: auto;
+ text-align: center;
+ vertical-align: top;
+ border:  solid #4698c4;
+ border-collapse: collapse;
+ caption-side: bottom;
+ border-radius: 10px;
+ box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+ margin: auto;
+ border-left: 0px;
+ border-right: 0px;
+ border-top: 0px;
+ border-bottom: 0px;
 }
 td {
 width: 0%;
@@ -149,18 +166,23 @@ width: 0%;
  border-collapse: collapse;
  padding: 0.3em;
  caption-side: bottom;
+ color: #000;
  border-radius: 10px;
  -moz-border-radius-bottomright: 10px;
+ background-color: #d4eaf8;
+ border-left: 0px;
+ border-right: 0px;
+ border-top: 0px;
+ border-bottom: 0px;
 }
 caption {
  padding: 0.3em;
  color: #000;
-  background: #000;
-  
+ background: #000; 
 }
 
 h4{
-  color: grey;
+  color: #414141;
   font-size: 40px;
 }
 th {
@@ -176,4 +198,8 @@ th {
  caption-side: bottom;
  border-radius: 10px;
  -moz-border-radius-bottomright: 10px;
+ border-left: 0px;
+ border-right: 0px;
+ border-top: 0px;
+ border-bottom: 0px;
 }

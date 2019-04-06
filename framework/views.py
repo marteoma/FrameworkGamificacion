@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, logout, login
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from .utils import calc_level
 from .forms import Login, Register, PrincipleForm, NewAssessment
 from .models import Principle, Assessment
 
@@ -29,8 +28,8 @@ def resultados(request, assessment):
     Show the result of the evaluation
     '''    
     
-    result = calc_level(assessment)
-    return render(request, 'framework/results.html', {'result': result, 'total': result*10})
+    result = 1
+    return render(request, 'framework/results.html', {'result': result, 'total': result})
 
 def register(request):
     '''

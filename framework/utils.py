@@ -1,7 +1,7 @@
 '''
 This file contains functions that might help the procedures.
 '''
-from framework.models import Assessment, Learning_Objectives
+from framework.models import Assessment, Principle
 from django.db.models import Avg
 
 '''
@@ -61,7 +61,7 @@ def __W(principle: int, assessment):
     '''
     Tlg = __Tlg(principle, assessment)
     Tru = __Tru(principle, assessment)
-    Gr = Learning_Objectives.objects.filter(principle=principle, assessment_id=assessment)\
+    Gr = Principle.objects.filter(principle=principle, assessment_id=assessment)\
         .aggregate(Avg('grade'))['grade__avg']
     W = 0
     if Gr != None:
@@ -101,7 +101,7 @@ def __CountPrinciple(p: int = 0, a: int = 1):
         Amount of learning objectives
     '''
     if p == 0:
-        return Learning_Objectives.objects.filter(assessment_id=a).count()
+        return Principle.objects.filter(assessment_id=a).count()
     else:
-        return Learning_Objectives.objects.filter(principle=p, assessment_id=a).count()
+        return Principle.objects.filter(principle=p, assessment_id=a).count()
     

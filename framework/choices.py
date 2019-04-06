@@ -18,3 +18,11 @@ PRINCIPLE_CHOICES = (
     (9, "Research generating"),
     (10, "Knowledge-based")
 )
+
+PRINCIPLES_TYPES_CHOICES = (
+    (1, "Roles"),
+    (2, "Materials"),
+    (3, "Steps"),
+    (4, "Rules"),
+    (5, "Goals"),
+)

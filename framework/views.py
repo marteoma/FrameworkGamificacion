@@ -4,8 +4,8 @@ from django.contrib.auth import authenticate, logout, login
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .utils import calc_level
-from .forms import Login, Register, Learning_ObjectivesForm, NewAssessment
-from .models import Learning_Objectives, Assessment
+from .forms import Login, Register, PrincipleForm, NewAssessment
+from .models import Principle, Assessment
 
 # Create your views here.
 def index(request):
@@ -87,11 +87,11 @@ def v_learning_objectives(request, assessment):
     if request.method == 'POST':
         post_copy = request.POST.copy()
         post_copy.update({'assessment':assessment})
-        form = Learning_ObjectivesForm(post_copy)
+        form = PrincipleForm(post_copy)
         form.save()
         return redirect('/listobj/' + str(assessment))
     else:
-        form = Learning_ObjectivesForm()
+        form = PrincipleForm()
         context = {'form': form, }
         return render(request,'framework/objetivos_aprendizaje.html', context)
 
@@ -100,13 +100,13 @@ def v_learning_objectives_edit(request, codigo):
     '''
     Method edit a learning objectives
     '''
-    inst = Learning_Objectives.objects.get(id=codigo)
+    inst = Principle.objects.get(id=codigo)
     assessment = inst.assessment_id
     if request.method == 'GET':
-        form = Learning_ObjectivesForm(instance=inst)
+        form = PrincipleForm(instance=inst)
         return render(request, 'framework/objetivos_aprendizaje.html', {'form': form})
     else:
-        form = Learning_ObjectivesForm(request.POST, instance=inst)
+        form = PrincipleForm(request.POST, instance=inst)
         if form.is_valid():
             form.save()
         return redirect('/listobj/' + str(assessment))    
@@ -116,7 +116,7 @@ def v_learning_objectives_delete(request, codigo):
     '''
     Method delete a learning objectives
     '''
-    inst = Learning_Objectives.objects.get(id=codigo)
+    inst = Principle.objects.get(id=codigo)
     assessment = inst.assessment_id    
     inst.delete()
     return redirect('/listobj/' + str(assessment))
@@ -126,7 +126,7 @@ def list_objectives(request, assessment):
     '''
     Method list learning objectives
     '''
-    listt = Learning_Objectives.objects.filter(assessment_id=assessment)
+    listt = Principle.objects.filter(assessment_id=assessment)
     context = {'lista_obj': listt, 'assessment': assessment}
     return render(request, 'framework/lista_obj.html', context)
 

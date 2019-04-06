@@ -1,6 +1,6 @@
 from django import forms
-from .models import Learning_Objectives
-from .choices import *
+from .models import Principle
+from .choices import PRINCIPLE_CHOICES, GRADE_CHOICES
 
 class Login(forms.Form):
     '''
@@ -23,32 +23,26 @@ class NewAssessment(forms.Form):
     '''
     name = forms.CharField(label='', required=True, widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
 
-class Learning_ObjectivesForm(forms.ModelForm):
+class PrincipleForm(forms.ModelForm):
 
     class Meta:
-        model = Learning_Objectives
+        model = Principle
 
-        fields = [
-            'id',
-            'objective',
+        fields = [            
             'principle',
             'grade',
-            'evidence',
-            'assessment'
+            'justification',
+            'assessment',
         ]
 
-        labels = {
-            'id' : 'Código',
-            'objective': 'Objetivo',
+        labels = {            
             'principle': 'Principio',
             'grade': 'Grado',
-            'evidence': 'Evidencia',
+            'justification': 'Evidencia',
         }
-        widgets = {
-            'id' : forms.NumberInput(attrs={'class':'form-control'}),
-            'objective': forms.TextInput(attrs={'class':'form-control'}),
+        widgets = {            
             'principle': forms.Select(choices=PRINCIPLE_CHOICES, attrs={'class':'form-control'}),
             'grade' : forms.Select(choices=GRADE_CHOICES, attrs={'class':'form-control'}),
-            'evidence': forms.TextInput(attrs={'class':'form-control'}),
+            'justification': forms.TextInput(attrs={'class':'form-control'}),
             'assessment': forms.HiddenInput()
         }

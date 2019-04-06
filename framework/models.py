@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models import Avg
 
 '''
 Constants
@@ -25,9 +24,11 @@ class Assessment(models.Model):
 
     def level(self):
         #List of Wid for all the principles of the strategy
-        lw =  Principle.objects.filter(assessment_id=self.id).\
-            aggregate(Avg('__W'))['__W__avg']
-        return round(lw, 2)
+        lw =  list(Principle.objects.filter(assessment_id=self.id))
+        acum = 0
+        for i in lw:
+            acum += i.W()
+        return round(acum / len(lw), 2)
 
     def __str__(self):
         return self.name

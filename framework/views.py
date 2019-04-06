@@ -28,8 +28,9 @@ def resultados(request, assessment):
     Show the result of the evaluation
     '''    
     
-    result = 1
-    return render(request, 'framework/results.html', {'result': result, 'total': result})
+    a = Assessment.objects.get(id=assessment)
+    result = a.level()
+    return render(request, 'framework/results.html', {'result': result})
 
 def register(request):
     '''

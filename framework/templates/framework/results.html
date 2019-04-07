@@ -3,7 +3,7 @@
 <h2>Resultado del nivel de Gamificación</h2>
 
 <hr>
-{% if total > 75 %}
+{% if result > 75 %}
   <h4>Tu estrategia esta completamente gamificada</h4>
   <svg viewbox="0 0 100 20">
     <defs>
@@ -24,10 +24,10 @@
         </path>
       </pattern>
     </defs>
-    <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6">{{total}}%</text>
-    <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.1">{{total}}%</text>
+    <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6">{{result}}%</text>
+    <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.1">{{result}}%</text>
   </svg>
-{% elif total < 75  and total > 25 %}
+{% elif result < 75  and result > 25 %}
   <h4>Tu estrategia esta parcialmente gamificada</h4>
   <svg viewbox="0 0 100 20">
     <defs>
@@ -48,10 +48,10 @@
         </path>
       </pattern>
     </defs>
-    <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6">{{total}}%</text>
-    <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.1">{{total}}%</text>
+    <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6">{{result}}%</text>
+    <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.1">{{result}}%</text>
   </svg>
-{% elif total < 25 %}
+{% elif result < 25 %}
   <h4>Tu estrategia no esta gamificada</h4>
   <svg viewbox="0 0 100 20">
     <defs>
@@ -72,8 +72,8 @@
         </path>
       </pattern>
     </defs>
-    <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6">{{total}}%</text>
-    <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.1">{{total}}%</text>
+    <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6">{{result}}%</text>
+    <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.1">{{result}}%</text>
   </svg>
 {% else %}  
   <h1>HA OCURRIDO UN ERROR, REVISE LA ESTRATEGIA</h1>

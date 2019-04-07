@@ -85,11 +85,16 @@ def v_learning_objectives(request, assessment):
     Method add a learning objectives
     '''
     if request.method == 'POST':
-        post_copy = request.POST.copy()
-        post_copy.update({'assessment':assessment})
-        form = PrincipleForm(post_copy)
-        form.save()
-        return redirect('/listobj/' + str(assessment))
+        try:
+            post_copy = request.POST.copy()
+            post_copy.update({'assessment':assessment})
+            form = PrincipleForm(post_copy)
+            form.save()
+            return redirect('/listobj/' + str(assessment))
+        except:
+            form = PrincipleForm()
+            context = {'form': form, 'error': 'Este principio ya está registrado para la estrategia'}
+            return render(request,'framework/objetivos_aprendizaje.html', context)    
     else:
         form = PrincipleForm()
         context = {'form': form, }

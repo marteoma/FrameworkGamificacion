@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from .choices import GRADE_CHOICES, PRINCIPLE_CHOICES
 
 '''
 Constants
@@ -15,6 +16,7 @@ class Assessment(models.Model):
     '''
     An assessment related to an specific user
     '''
+    #TODO: This model has to be fixed to create an user independente counter
     objects = models.Manager()
 
     id = models.AutoField(primary_key=True)
@@ -50,12 +52,15 @@ class Principle(models.Model):
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
 
     def W(self):
+        ''' Get the weight of this principle in the assessment '''
         return (self.Tlg() + self.Tru() + r + m + s) * self.grade
 
     def Tlg(self):
+        ''' Get the real total of goals '''
         return (self.count(self.principle) * 40) / self.count()
 
     def Tru(self):
+        ''' Get the real total of rules '''
         return (self.count(self.principle) * 30) / self.count()
 
     def count(self, p: int = 0):
@@ -77,6 +82,14 @@ class Principle(models.Model):
             return Principle.objects.filter(assessment_id=self.assessment).count()
         else:
             return Principle.objects.filter(principle=p, assessment_id=self.assessment).count()
+
+    def showGrade(self):
+        ''' Conver the grade into its text equivalent '''
+        return dict(GRADE_CHOICES)[self.grade]
+    
+    def showPrinciple(self):
+        ''' Conver the principle identifier into its text equivalent '''
+        return dict(PRINCIPLE_CHOICES)[self.principle]
 
     class Meta:
         unique_together = ("assessment", "principle")

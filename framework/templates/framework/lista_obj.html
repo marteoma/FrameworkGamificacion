@@ -5,26 +5,20 @@
 {% if lista_obj %}
 <table class="tg">
 	<tr>
-	  <th >Codigo</th>
-	  <th >Objetivo</th>
 	  <th >Principio</th>
-	  <th >Grado</th>
+	  <th >Nivel de evidencia</th>
 	  <th >Evidencia</th>
-	  <th >Wid</th>
 	  <th >Acciones</th>
 	</tr>
 	
 	{% for i in lista_obj %}
 	<tr>
-	  <td class="tg-baqh">{{i.id}}</td>
-	  <td class="tg-baqh">{{i.objective}}</td>
-	  <td class="tg-baqh">{{i.principle}}</td>
-	  <td class="tg-baqh">{{i.grade}}</td>
-	  <td class="tg-baqh">{{i.evidence}}</td>
-	  <td class="tg-baqh">{{i.wid}}</td>
+	  <td class="tg-baqh">{{i.showPrinciple}}</td>	  
+	  <td class="tg-baqh">{{i.showGrade}}</td>
+	  <td class="tg-baqh">{{i.justification}}</td>	  
 		<td class="tg-baqh">
-		<a class="btn-btn-success-btn-xs"  href="{% url 'framework:edit_objetivos' i.id %}">Editar</a>
-		<a class="btn-btn-danger-btn-xs"  href="{% url 'framework:delete_objetivos' i.id %}">Eliminar</a>
+		<a class="btn-btn-success-btn-xs"  href="{% url 'framework:edit_objetivos' i.principle %}">Editar</a>
+		<a class="btn-btn-danger-btn-xs"  href="{% url 'framework:delete_objetivos' i.principle %}">Eliminar</a>
 		</td>
 	</tr>
 	{% endfor %}

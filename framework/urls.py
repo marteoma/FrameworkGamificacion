@@ -10,8 +10,8 @@ urlpatterns = [
     path('logout', views.v_logout, name='logout'),
     path('objetivos/<int:assessment>', views.v_learning_objectives, name='objetivos'),
     path('listobj/<int:assessment>', views.list_objectives, name='list_objetivos'),
-    path('editar/<int:codigo>/', views.v_learning_objectives_edit, name='edit_objetivos'),
-    path('delete/<int:codigo>/', views.v_learning_objectives_delete, name='delete_objetivos'),
+    path('edit_objetivos/<int:codigo>/', views.v_learning_objectives_edit, name='edit_objetivos'),
+    path('delete_objetivos/<int:codigo>/', views.v_learning_objectives_delete, name='delete_objetivos'),
     path('assessments', views.list_assessment, name='assessment'),
     path('assessments/new', views.new_assessment, name='new_assessment'),
 ]

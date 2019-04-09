@@ -45,7 +45,7 @@ class Principle(models.Model):
     '''
     objects = models.Manager()
         
-    principle = models.IntegerField(null=False, default=1, primary_key=True)
+    principle = models.IntegerField(null=False, default=1)
     grade = models.IntegerField(null=False, default=1)
     justification = models.CharField(max_length=150, null=False)
 

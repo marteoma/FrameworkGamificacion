@@ -1,6 +1,6 @@
 from django import forms
-from .models import Principle
-from .choices import PRINCIPLE_CHOICES, GRADE_CHOICES
+from .models import Principle, Evidence
+from .choices import PRINCIPLE_CHOICES, GRADE_CHOICES, PRINCIPLES_TYPES_CHOICES
 
 class Login(forms.Form):
     '''
@@ -38,11 +38,32 @@ class PrincipleForm(forms.ModelForm):
         labels = {            
             'principle': 'Principio',
             'grade': 'Grado',
-            'justification': 'Evidencia',
+            'justification': 'Justificacion',
         }
         widgets = {            
             'principle': forms.Select(choices=PRINCIPLE_CHOICES, attrs={'class':'form-control'}),
             'grade' : forms.Select(choices=GRADE_CHOICES, attrs={'class':'form-control'}),
             'justification': forms.TextInput(attrs={'class':'form-control'}),
             'assessment': forms.HiddenInput()
+        }
+
+class EvidenceForm(forms.ModelForm):
+
+    class Meta:
+        model = Evidence
+
+        fields = [            
+            'sort',
+            'description',   
+            'principle',
+        ]
+
+        labels = {            
+            'sort': 'Tipo',
+            'description': 'Descripción',            
+        }
+        widgets = {            
+            'sort': forms.Select(choices=PRINCIPLES_TYPES_CHOICES, attrs={'class':'form-control'}),            
+            'description': forms.TextInput(attrs={'class':'form-control'}),
+            'principle': forms.HiddenInput()
         }

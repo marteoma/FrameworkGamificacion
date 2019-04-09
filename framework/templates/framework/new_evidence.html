@@ -5,13 +5,13 @@
 <link rel="stylesheet" href="{% static 'framework/forms.css' %}" type="text/css">
 </head>
 <div><h1>{{error}}</h1></div>
-<div class = "new-obj">    
+<div class = "new-obj">
     <div class="form">
-        <form method="POST" class=".new-form">
-            <h2>Nuevo Objetivo de Aprendizaje</h2>
+        <form  method="POST" class=".new-form">
+            <h2>Nueva Evidencia</h2>
             {% csrf_token %}
             {{ form.as_p}}
-            <button type="submit">Añadir objetivo</button>
+            <button type="submit">Añadir Evidencia</button>
         </form>
     </div>
 </div>

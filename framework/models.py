@@ -45,7 +45,7 @@ class Principle(models.Model):
     '''
     objects = models.Manager()
         
-    principle = models.IntegerField(null=False, default=1, primary_key=True)
+    principle = models.IntegerField(null=False, default=1)
     grade = models.IntegerField(null=False, default=1)
     justification = models.CharField(max_length=150, null=False)
 
@@ -53,7 +53,7 @@ class Principle(models.Model):
 
     def W(self):
         ''' Get the weight of this principle in the assessment '''
-        return (self.Tlg() + self.Tru() + r + m + s) * self.grade
+        return ((self.Tlg() + self.Tru() + r + m + s) * self.grade) / 3
 
     def Tlg(self):
         ''' Get the real total of goals '''

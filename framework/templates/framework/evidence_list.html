@@ -1,0 +1,24 @@
+{% extends 'framework/base.html' %}
+
+<html lang="es">
+{% block content %}
+{% if list %}
+<table class="tg">
+	<tr>
+        <th >Tipo</th>
+        <th >Descripción</th>        
+	</tr>
+	
+	{% for i in list %}
+	<tr>
+	  <td class="tg-baqh">{{i.sort}}</td>	  
+	  <td class="tg-baqh">{{i.description}}</td>	  
+	</tr>
+	{% endfor %}
+
+	{% else %}
+	<h4>No hay registros</h4>
+	{% endif %}
+  </table>	
+{% endblock%}
+</html>

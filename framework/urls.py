@@ -14,4 +14,6 @@ urlpatterns = [
     path('delete_objetivos/<int:codigo>/', views.v_learning_objectives_delete, name='delete_objetivos'),
     path('assessments', views.list_assessment, name='assessment'),
     path('assessments/new', views.new_assessment, name='new_assessment'),
+    path('evidencias/<int:identifier>', views.evidence_list, name='evidencias'),
+    path('evidencias_new/<int:identifier>', views.evidence_new, name='new_evidence'),
 ]

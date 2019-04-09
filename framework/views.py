@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, logout, login
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from .forms import Login, Register, PrincipleForm, NewAssessment
-from .models import Principle, Assessment
+from .forms import Login, Register, PrincipleForm, NewAssessment, EvidenceForm
+from .models import Principle, Assessment, Evidence
 
 # Create your views here.
 def index(request):
@@ -166,6 +166,30 @@ def new_assessment(request):
         form = NewAssessment()
         return render(request, 'framework/assessment_new.html', {'form': form})
 
+@login_required
+def evidence_list(request, identifier):
+    '''
+    List all the evidences for the principle
+    '''
+    evidences = Evidence.objects.filter(principle=identifier)
+    return render(request, 'framework/evidence_list.html', {'list': evidences})
 
-
-    
+@login_required
+def evidence_new(request, identifier):
+    '''
+    Creates a new evidence for a indicated principle
+    '''
+    if request.method == 'POST':
+        try:
+            post_copy = request.POST.copy()
+            post_copy.update({'principle': identifier})
+            form = EvidenceForm(post_copy)
+            form.save()
+            return redirect('/evidencias/' + str(identifier))
+        except:
+            form = EvidenceForm()
+            context = {'form': form, 'error': 'Este principio ya está registrado para la estrategia'}
+            return render(request,'framework/new_evidence.html', context)  
+    else:
+        form = EvidenceForm()
+        return render(request, 'framework/new_evidence.html', {'form': form})

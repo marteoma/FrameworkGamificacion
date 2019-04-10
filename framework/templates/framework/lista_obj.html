@@ -22,8 +22,8 @@
 			<a class="ver-edit" href="{% url 'framework:new_evidence' i.id %}">Add</a>
 		</td>	  
 		<td class="tg-baqh">
-			<a class="btn-btn-success-btn-xs"  href="{% url 'framework:edit_objetivos' i.principle %}">Editar</a>
-			<a class="btn-btn-danger-btn-xs"  href="{% url 'framework:delete_objetivos' i.principle %}">Eliminar</a>
+			<a class="btn-btn-success-btn-xs"  href="{% url 'framework:edit_objetivos' i.id %}">Editar</a>
+			<a class="btn-btn-danger-btn-xs"  href="{% url 'framework:delete_objetivos' i.id %}">Eliminar</a>
 		</td>
 	</tr>
 	{% endfor %}

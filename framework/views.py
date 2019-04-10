@@ -93,11 +93,11 @@ def v_learning_objectives(request, assessment):
             return redirect('/listobj/' + str(assessment))
         except:
             form = PrincipleForm()
-            context = {'form': form, 'error': 'Este principio ya está registrado para la estrategia'}
+            context = {'form': form, 'error': 'Este principio ya está registrado para la estrategia' ,'id' : assessment }
             return render(request,'framework/objetivos_aprendizaje.html', context)    
     else:
         form = PrincipleForm()
-        context = {'form': form, }
+        context = {'form': form, 'id' : assessment }
         return render(request,'framework/objetivos_aprendizaje.html', context)
 
 @login_required
@@ -109,7 +109,7 @@ def v_learning_objectives_edit(request, codigo):
     assessment = inst.assessment_id
     if request.method == 'GET':
         form = PrincipleForm(instance=inst)
-        return render(request, 'framework/objetivos_aprendizaje.html', {'form': form})
+        return render(request, 'framework/objetivos_aprendizaje.html', {'form': form, 'id' : assessment })
     else:
         form = PrincipleForm(request.POST, instance=inst)
         if form.is_valid():

@@ -18,10 +18,24 @@ label {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+  text-decoration: none;
+  border: 0;
 }
 
+.ver-edit{
+  background-color: #4698c4;
+  color: white;
+  padding: 1px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  display: inline;
+}
+
+
 .btn-btn-success-btn-xs {
-  background-color: #6b6d6c;
+  background-color: #69e48d;
   color: white;
   padding: 1px 10px;
   text-align: center;
@@ -38,6 +52,26 @@ label {
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
+}
+
+.btn-evaluar{
+  position: fixed;
+  bottom: 6.5px; 
+  right: 8px;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #69e48d;
+  border: 0;
+  border-radius: 100px;
+  padding: 15px;
+  font-size: 14px;
+  max-width: 90px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  text-align: center;
+  color: white;
 }
 
 .nav {
@@ -97,7 +131,7 @@ label {
 }
 /*Estos son los estilos de la hamburguesa del menú que abre y cierra el mismo*/
 .menu-toogle {
-  position: absolute; /*Lo posicionamos absolutamente para poder darle una posición y poder moverlo según el menú esté abierto o cerrado*/
+  position: fixed; /*Lo posicionamos fixed para poder darle una posición y poder moverlo según el menú esté abierto o cerrado*/
   width: 35px;
   line-height: 1.1;
   text-align: center;
@@ -113,6 +147,7 @@ label {
   content: "☰";
   font-size: 32px;
   color: lightblue;
+  cursor: pointer;
 }
 
 /*Estos son los estilos que le dan la funcionalidad al menú*/
@@ -130,6 +165,22 @@ label {
 .checkbox:checked ~ .menu-toogle {
   left: 208px;
   position: fixed; /*Fijamos la hamburgues para que se desplace junto con el menú*/
+}
+
+.form{
+  background: #ffffff;
+  max-width: 360px;
+  margin: 0 auto 50px;
+  text-align: center;
+  padding: 30px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.counterCell:before {              
+  content: counter(tableCount); 
+  counter-increment: tableCount; 
 }
 
 body {
@@ -155,7 +206,9 @@ table {
   border-right: 0px;
   border-top: 0px;
   border-bottom: 0px;
+  counter-reset: tableCount;  
 }
+
 td {
   width: 0%;
   text-align: center;
@@ -200,3 +253,5 @@ th {
   border-top: 0px;
   border-bottom: 0px;
 }
+
+

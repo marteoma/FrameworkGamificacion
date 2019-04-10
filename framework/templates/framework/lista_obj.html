@@ -18,8 +18,8 @@
 	  <td class="tg-baqh">{{i.showGrade}}</td>
 	  <td class="tg-baqh">{{i.justification}}</td>
 		<td class="tg-baqh">
-			<a href="{% url 'framework:evidencias' i.id %}">Ver</a>
-			<a href="{% url 'framework:new_evidence' i.id %}">Add</a>
+			<a class="ver-edit" href="{% url 'framework:evidencias' i.id %}">Ver</a>
+			<a class="ver-edit" href="{% url 'framework:new_evidence' i.id %}">Add</a>
 		</td>	  
 		<td class="tg-baqh">
 			<a class="btn-btn-success-btn-xs"  href="{% url 'framework:edit_objetivos' i.principle %}">Editar</a>
@@ -31,7 +31,11 @@
 	{% else %}
 	<h4>No hay registros</h4>
 	{% endif %}
-  </table>
-	<a class="btn-new" href="{% url 'framework:objetivos' assessment %}">Nuevo objetivo</a>
+	</table>
+	<ul>
+		<a class="btn-new" href="{% url 'framework:objetivos' assessment %}">Agregar Principio</a>
+	  <a class="btn-new" href="{% url 'framework:resultados' assessment %}">Evaluar</a>
+	</ul>
+	
 {% endblock%}
 </html>

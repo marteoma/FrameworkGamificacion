@@ -1,4 +1,5 @@
 {% extends 'framework/base.html' %}
+
 {% block content%}
 <head>
 {% load static %}
@@ -8,10 +9,11 @@
 <div class = "new-obj">    
     <div class="form">
         <form method="POST" class=".new-form">
-            <h2>Nuevo Objetivo de Aprendizaje</h2>
+            <h2>Nuevo Principio</h2>
             {% csrf_token %}
             {{ form.as_p}}
-            <button type="submit">Añadir objetivo</button>
+            <button type="submit">Agregar</button>
+            <a class="btn-evaluar"  href="{% url 'framework:resultados' id %}">Evaluar</a>
         </form>
     </div>
 </div>

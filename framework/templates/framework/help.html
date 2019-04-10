@@ -1,0 +1,167 @@
+{% extends 'framework/base.html' %}
+<html lang="es">
+{% block content %}
+<center>
+<h1>AYUDA</h1>
+<br>
+<h3>Guia</h3>
+<ul>
+<li>-Inicie sesión, si no tiene una cuenta, puede proceder a registrarse</li>
+<li>-Una vez ingrese, puede dar clic en 'Nueva evaluación' y crear su nueva evaluación</li>
+<li>-Hecho esto, proceda a agregar un principio a su evaluación, seleccionando el principio, el grado, esto seguido de una justificación.</li>
+<li>-Después de haber creado su principio, puede proceder a agregar evidencias, eligiendo el tipo y dejando una descripción de esta</li>
+<li>-Luego podrá evaluar su estrategia, obteniendo así un % total gamificado según las pautas de MEEJEL.</li>
+</ul>
+<h4>A continuación, podrá encontrar tablas, las cuales en caso de ser necesario podran servirle de apoyo al momento de usar MEEJEL</h4>
+</center>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3">Gamification principles</th>
+    </tr>
+    <tr>
+      <th scope="col">ID</th>
+      <th>Principle Name</th>
+      <th>Description</th>
+      <th>Expected benefits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Orientation</td>
+      <td>Gamified processes place the user (employee) at the center of the experience</td>
+      <td>Increased engagement, sense of control and self-efficacy</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Persuasive elements</td>
+      <td>Gamified processes include persuasive elements based on sound psychological and behavioral theories</td>
+      <td>Adoption of new initiatives Increased satisfaction with internal communication</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Learning orientation</td>
+      <td>Focus on knowledge acquisition, skill development, motivational outcomes or behavior change</td>
+      <td>Development of personal and organizational capabilities and resources</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Achievement based rewards</td>
+      <td>Focus on a justifiable and predictable return on investment</td>
+      <td>Increased personal satisfaction and employee retention</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Y Generation adaptable</td>
+      <td>Generation Y is the fastest growing segment of the workforce and they are looking for work experiences that are supportive, fun and engaging</td>
+      <td>Employee acquisition and retention</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Amusement factors</td>
+      <td>Inclusion of humor, play and fun elements as part of the work processes</td>
+      <td>Increased personal satisfaction and enhanced wellbeing</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Transformative</td>
+      <td>Use of a balanced and attractive combination of competition and collaboration in order to transform existing work processes within an organization</td>
+      <td>Enhanced productivity</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Wellbeing oriented</td>
+      <td>Focus on personal and organizational wellbeing</td>
+      <td>Enhanced personal and organizational wellbeing</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Research generating</td>
+      <td>Collaborative research efforts must be encouraged to justify future investments in the area</td>
+      <td>Enhanced monitoring and decision making</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Knowledge-based</td>
+      <td>Based on knowledge, either as an outcome or as feedback</td>
+      <td>Development of personal and organizational capabilities and resources</td>
+    </tr>
+  </tbody>
+  <tfoot>
+</table>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="2">Variable definitions</th>
+    </tr>
+    <tr>
+      <th scope="col">Symbol</th>
+      <th>Variable name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Gr_id</th>
+      <td>Grade</td>
+      <td>Identification of evidence level of incorporation of each principle in environment under assessment. For achieving this grade, a qualitative assessment scale was defined according to a Likert scale (See Table 3).</td>
+    </tr>
+    <tr>
+      <th>W_id</th>
+      <td>Principle Weight</td>
+      <td>Sum of the assessment of each evidence multiplied by the grade of incorporation of each gamification principle identified. Refer to equation (1)</td>
+    </tr>
+    <tr>
+      <th>LW_id</th>
+      <td>Gamification level</td>
+      <td>Percentage of incorporation of gamification of the environment under assessment. Refer to equations (2)</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="2">Likert scale for grade value evidence</th>
+    </tr>
+    <tr>
+      <th scope="col">Likert scale</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Null</td>
+      <td>There is no evidence that the principle is fulfilled or is present in the gamified environment.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Medium</td>
+      <td>There is some evidence that the principle is fulfilled or is present in the gamified environment and it is possible to identify at least one element associated with this principle with some difficulty.</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Significant</td>
+      <td>There is some evidence that the principle is fulfilled or is present in the gamified environment and it is possible to identify at least one element associated with this principle</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>High</td>
+      <td>There is evidence that the principle is fulfilled or is present in the gamified environment and it is possible to identify the elements associated with this principle easily.</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Very high</td>
+      <td>There is evidence that the principle is fulfilled or is present in the gamified environment and it is easily identifiable.</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock% }
+</html>

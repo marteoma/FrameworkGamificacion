@@ -7,10 +7,10 @@
 <div class = "new-obj">
     <div class="form">
         <form action="{% url 'framework:new_assessment' %}" method="POST" class=".new-form">
-            <h2>Nueva Estrategia de evaluación</h2>
+            <h2>Nueva Evaluación</h2>
             {% csrf_token %}
             {{ form.as_p}}
-            <button type="submit" value="Crear objetivo">Crear Estrategia</button>
+            <button type="submit" value="Crear objetivo">Crear Evaluación</button>
         </form>
     </div>
 </div>

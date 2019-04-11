@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from .choices import GRADE_CHOICES, PRINCIPLE_CHOICES
+from .choices import GRADE_CHOICES, PRINCIPLE_CHOICES, PRINCIPLES_TYPES_CHOICES
 
 '''
 Constants
@@ -104,6 +104,10 @@ class Evidence(models.Model):
     description = models.CharField(null=False, max_length=500)
 
     principle = models.ForeignKey(Principle, on_delete=models.CASCADE)
+
+    def showSort(self):
+        ''' Convert the type indentifier into its text equivalent '''
+        return dict(PRINCIPLES_TYPES_CHOICES)[self.sort]
 
     def __str__(self):
         return self.description

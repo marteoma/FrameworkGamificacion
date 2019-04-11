@@ -27,10 +27,12 @@ def resultados(request, assessment):
     '''
     Show the result of the evaluation
     '''    
-    
-    a = Assessment.objects.get(id=assessment)
-    result = a.level()
-    return render(request, 'framework/results.html', {'result': result})
+    try:
+        a = Assessment.objects.get(id=assessment)
+        result = a.level()
+        return render(request, 'framework/results.html', {'result': result})
+    except:
+        return render(request, 'framework/results.html')
 
 def register(request):
     '''
@@ -78,6 +80,13 @@ def v_logout(request):
     logout(request)
     form = Login()
     return redirect('/', { 'form': form})
+
+@login_required
+def v_help(request):
+    ''''
+    App help
+    '''
+    return render(request,'framework/help.html')
 
 @login_required
 def v_learning_objectives(request, assessment):

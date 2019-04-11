@@ -27,10 +27,12 @@ def resultados(request, assessment):
     '''
     Show the result of the evaluation
     '''    
-    
-    a = Assessment.objects.get(id=assessment)
-    result = a.level()
-    return render(request, 'framework/results.html', {'result': result})
+    try:
+        a = Assessment.objects.get(id=assessment)
+        result = a.level()
+        return render(request, 'framework/results.html', {'result': result})
+    except:        
+        return render(request, 'framework/results.html')
 
 def register(request):
     '''

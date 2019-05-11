@@ -30,7 +30,7 @@ class Assessment(models.Model):
         acum = 0
         for i in lw:
             acum += i.W()
-        return round(acum / len(lw), 2)
+        return round(acum, 2)
 
     def __str__(self):
         return self.name

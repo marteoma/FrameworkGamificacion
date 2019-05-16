@@ -12,11 +12,11 @@ m = 5
 #Steps
 s = 5
 
+
 class Assessment(models.Model):
-    '''
+    """
     An assessment related to an specific user
-    '''
-    #TODO: This model has to be fixed to create an user independente counter
+    """
     objects = models.Manager()
 
     id = models.AutoField(primary_key=True)
@@ -25,12 +25,12 @@ class Assessment(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def level(self):
-        #List of Wid for all the principles of the strategy
-        lw =  list(Principle.objects.filter(assessment_id=self.id))
+        # List of Wid for all the principles of the strategy
+        lw = list(Principle.objects.filter(assessment_id=self.id))
         acum = 0
         for i in lw:
             acum += i.W()
-        return round(acum, 2)
+        return round(acum / 10, 2)
 
     def __str__(self):
         return self.name
@@ -40,9 +40,9 @@ class Assessment(models.Model):
 
 
 class Principle(models.Model):
-    '''
-    Modelo correspondiente a los principios 
-    '''
+    """
+    Modelo correspondiente a los principios
+    """
     objects = models.Manager()
         
     principle = models.IntegerField(null=False, default=1)
@@ -52,19 +52,21 @@ class Principle(models.Model):
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
 
     def W(self):
-        ''' Get the weight of this principle in the assessment '''
-        return ((self.Tlg() + self.Tru() + r + m + s) * self.grade) / 3
+        """ Get the weight of this principle in the assessment """
+        return (self.Tlg() + self.Tru() + r + m + s) * self.grade
 
     def Tlg(self):
-        ''' Get the real total of goals '''
-        return (self.count(self.principle) * 40) / self.count()
+        """ Get the real total of goals """
+        # return (self.count(self.principle) * 40) / self.count()
+        return 0
 
     def Tru(self):
-        ''' Get the real total of rules '''
-        return (self.count(self.principle) * 30) / self.count()
+        """ Get the real total of rules """
+        # return (self.count(self.principle) * 30) / self.count()
+        return 0
 
     def count(self, p: int = 0):
-        '''Count the amount of learning objectives for the specified principle.
+        """Count the amount of learning objectives for the specified principle.
         If no principle is passed will count all the objectives.
 
         Parameters
@@ -72,32 +74,32 @@ class Principle(models.Model):
         p : int
             Id of the principle
             If none, all the principles will count
-        
+
         Returns
         -------
         int
             Amount of learning objectives
-        '''
+        """
         if p == 0:
             return Principle.objects.filter(assessment_id=self.assessment).count()
         else:
             return Principle.objects.filter(principle=p, assessment_id=self.assessment).count()
 
     def showGrade(self):
-        ''' Conver the grade into its text equivalent '''
+        """ Conver the grade into its text equivalent """
         return dict(GRADE_CHOICES)[self.grade]
     
     def showPrinciple(self):
-        ''' Conver the principle identifier into its text equivalent '''
+        """ Conver the principle identifier into its text equivalent """
         return dict(PRINCIPLE_CHOICES)[self.principle]
 
     class Meta:
         unique_together = ("assessment", "principle")
 
 class Evidence(models.Model):
-    '''
+    """
     Represents all the evidence of a principle on an strategy
-    '''
+    """
     objects = models.Manager()
 
     sort = models.IntegerField(null=False, default=1)
@@ -106,7 +108,7 @@ class Evidence(models.Model):
     principle = models.ForeignKey(Principle, on_delete=models.CASCADE)
 
     def showSort(self):
-        ''' Convert the type indentifier into its text equivalent '''
+        """ Convert the type indentifier into its text equivalent """
         return dict(PRINCIPLES_TYPES_CHOICES)[self.sort]
 
     def __str__(self):

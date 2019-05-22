@@ -14,4 +14,14 @@
         </form>
     </div>
 </div>
+<div class="conten">
+        <ul class="navigation">
+            <li>
+                    <a href="">EVALUAR</a>
+                    <ul>{% for i in assessments %}
+                            <a class="select" href="{% url 'framework:resultados' i.id %}">{{i.name}}</a>
+                            {% endfor %}
+                    </ul>		
+            </li>
+        </ul>
 {% endblock %}

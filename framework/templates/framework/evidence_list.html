@@ -1,7 +1,9 @@
 {% extends 'framework/base.html' %}
-
 <html lang="es">
-{% block content %}
+		{% block content %}
+<head>
+</head>
+<body>
 {% if list %}
 <table class="tg">
 	<tr>
@@ -19,6 +21,19 @@
 	{% else %}
 	<h4>No hay registros</h4>
 	{% endif %}
-  </table>	
+	</table>	
+<div class="conten">
+	<ul class="navigation">
+		<li>
+				<a href="">EVALUAR</a>
+				<ul>{% for i in assessments %}
+						<a class="select" href="{% url 'framework:resultados' i.id %}">{{i.name}}</a>
+						{% endfor %}
+				</ul>		
+		</li>
+	</ul>
+</div>
+</body>
 {% endblock%}
 </html>
+

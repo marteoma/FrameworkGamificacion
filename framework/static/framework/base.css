@@ -60,15 +60,12 @@ label {
   right: 8px;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
-  outline: 0;
+  text-decoration: none;
   background: #69e48d;
   border: 0;
   border-radius: 100px;
-  padding: 15px;
+  padding: 10px;
   font-size: 14px;
-  max-width: 90px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
   cursor: pointer;
   text-align: center;
   color: white;
@@ -180,19 +177,17 @@ label {
   border-bottom-right-radius: 50px;
   padding: 15px;
   margin-bottom: 15px;
-  margin-top: 15px;
   max-width: 500px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+  cursor: pointer;
 }
-
-
 
 .help:hover + .imagen {
   opacity: 1;
-  display: inline;
+  display:block;
 }
 
 .imagen{
@@ -201,6 +196,17 @@ label {
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.conten{
+  position: fixed;
+  top: 6px;
+  background: #69e48d;
+  border-radius: 50px;
+  display: inline;
+  max-width: auto;
+  margin-left: 1100px;
+  padding: 5px;
 }
 
 .tabla{
@@ -227,6 +233,17 @@ label {
 .counterCell:before {              
   content: counter(tableCount); 
   counter-increment: tableCount; 
+}
+
+.select:target{
+  display: block;
+}
+
+.select{
+  display: none;
+  border-radius: 50px;
+  padding: 7px;
+  margin-left: 0px;
 }
 
 body {
@@ -301,4 +318,43 @@ th {
   border-bottom: 0px;
 }
 
+ul, ol {
+  list-style:none;
+}
+
+.navigation > li {
+  float:left;
+}
+
+.navigation li a {
+  background-color:#69e48d;
+  color:#414141;
+  border-radius: 50px;
+  text-decoration:none;
+  padding:10px 12px;
+  display:block;
+}
+
+.navigation li a:hover {
+  background-color:white;
+}
+
+.navigation li ul {
+  display:none;
+  position:absolute;
+  min-width:140px;
+}
+
+.navigation li:hover > ul {
+  display:block;
+}
+
+.navigation li ul li {
+  position:relative;
+}
+
+.navigationli ul li ul {
+  right:-140px;
+  top:0px;
+}
 

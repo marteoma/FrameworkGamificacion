@@ -1,17 +1,22 @@
-<!DOCTYPE html>
+{% block content %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     {% load static %}
+    <link rel="stylesheet" href="{% static '/estilo.css' %}" type="text/css">
     <title>Title</title>
 </head>
 <body>
-    <img class="imagen" src="{% static 'Ecuaciones.JPG' %}" alt=""/>
-
-    <img class="imagen" src="{% static 'PlantillaJPG.JPG' %}" alt=""/>
-
-    <img class="imagen" src="{% static 'ValoresJPG.JPG' %}" alt=""/>
-
-    <img class="imagen" src="{% static 'Valores2JPG.JPG' %}" alt=""/>
+<div class="content">
+    <a class="help" href=#help-1>Ecuaciones</a>
+    <a class="help" href=#help-2>Plantillas</a>
+    <a class="help" href=#help-3>Reglas</a>
+    <a class="help" href=#help-4>Valores</a>
+</div>
+<img class="imagen" id="help-1" src="{% static 'Ecuaciones.JPG' %}" alt=""/>
+<img class="imagen" id="help-2" src="{% static 'PlantillaJPG.JPG' %}" alt=""/>
+<img class="imagen" id="help-3" src="{% static 'ValoresJPG.JPG' %}" alt=""/>
+<img class="imagen" id="help-4" src="{% static 'Valores2JPG.JPG' %}" alt=""/>
 </body>
 </html>
+{% endblock %}

@@ -180,14 +180,18 @@ def evidence_list(request, identifier):
     '''
     List all the evidences for the principle
     '''
+    user = request.user.id
+    assessments = Assessment.objects.filter(owner=user)
     evidences = Evidence.objects.filter(principle=identifier)
-    return render(request, 'framework/evidence_list.html', {'list': evidences})
+    return render(request, 'framework/evidence_list.html', {'list': evidences, 'info' : user, 'assessments': assessments})
 
 @login_required
 def evidence_new(request, identifier):
     '''
     Creates a new evidence for a indicated principle
     '''
+    user = request.user.id
+    assessments = Assessment.objects.filter(owner=user)
     if request.method == 'POST':
         try:
             post_copy = request.POST.copy()
@@ -197,8 +201,8 @@ def evidence_new(request, identifier):
             return redirect('/evidencias/' + str(identifier))
         except:
             form = EvidenceForm()
-            context = {'form': form, 'error': 'Este principio ya está registrado para la estrategia'}
+            context = {'form': form, 'error': 'Este principio ya está registrado para la estrategia', 'info' : user, 'assessments': assessments}
             return render(request,'framework/new_evidence.html', context)  
     else:
         form = EvidenceForm()
-        return render(request, 'framework/new_evidence.html', {'form': form})
+        return render(request, 'framework/new_evidence.html', {'form': form, 'info' : user, 'assessments': assessments})

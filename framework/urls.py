@@ -17,5 +17,4 @@ urlpatterns = [
     path('assessments/new', views.new_assessment, name='new_assessment'),
     path('evidencias/<int:identifier>', views.evidence_list, name='evidencias'),
     path('evidencias_new/<int:identifier>', views.evidence_new, name='new_evidence'),
-    
 ]

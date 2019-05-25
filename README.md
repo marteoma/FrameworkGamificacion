@@ -68,3 +68,12 @@ Para realizar las migraciones, se hace lo siguiente
 3. Si todo sale bien, en el terminal de psql, usando la base de datos framework, al buscar las 
 tablas (\\d) aparecerá una lista de tablas generadas por Django, en caso contrario, revisar que todo
 en la base de datos se cumpla.
+
+## Aviso
+
+Este sistema fue hecho con propósitos educionales y gratis, si lo ve en un lugar comercial, por favor informenos.
+
+Este sistema fue hecho por:
+* Mateo Arboleda Roldán: marteoma@github.com
+* Cristhian Chica Acosta: cca00@github.com
+* Sebastián Mejía: mcMEJIA1@github.com

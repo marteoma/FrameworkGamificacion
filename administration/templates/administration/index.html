@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load static %}
+<link rel="stylesheet" href="{% static 'forms_admin.css' %}" type="text/css">
+</head>
+
+<body onload="rotation()" style="margin:0;">
+<div class="login-page">
+  <div id="loader"></div>
+  <div style="display:none;" id="myDiv" class="animate-bottom">
+      {% if error %}
+        <div class="alert alert-danger">{{error}}</div>
+      {% endif %}
+        <form action="{% url 'administration:index' %}" method="POST" class="form">
+          <h1>MEEJEL ADMIN</h1>
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit" value="LOGIN">LOGIN</button>
+        </form>
+      
+  </div>
+</div>
+<script>
+
+var an;
+function rotation() {
+  an = setTimeout(showPage, 1000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
+
+</body>
+</html>
+

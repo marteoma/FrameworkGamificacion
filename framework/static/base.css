@@ -57,7 +57,7 @@ label {
 .btn-evaluar{
   position: fixed;
   top: 6.5px; 
-  right: 85px;
+  right: 175px;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   text-decoration: none;
@@ -204,7 +204,7 @@ label {
   top: 6px;
   display: inline;
   max-width: auto;
-  margin-left: 1090px;
+  margin-left: 1000px;
   padding: 5px;
 }
 

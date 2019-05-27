@@ -2,7 +2,7 @@
 {% block content%}
 <head>
 {% load static %}
-<link rel="stylesheet" href="{% static 'framework/forms.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'forms.css' %}" type="text/css">
 </head>
 <div class = "new-obj">
     <div class="form">
@@ -17,7 +17,7 @@
 <div class="conten">
         <ul class="navigation">
             <li>
-                    <a href="">EVALUAR</a>
+                <a href="">EVALUAR</a>
                     <ul>{% for i in assessments %}
                             <a class="select" href="{% url 'framework:resultados' i.id %}">{{i.name}}</a>
                             {% endfor %}
